@@ -1,0 +1,139 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class CPU {
+    private double harga;
+    private String merek;
+
+    public CPU(double harga, String merek) {
+        this.harga = harga;
+        this.merek = merek;
+    }
+
+    public void getCPUInfo() {
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
+        System.out.println("Komputer Merek: " + this.merek);
+
+        // menuliskan harga yang double ke dalam format rupiah
+        System.out.println("Harga: " + formatRupiah.format(this.harga));
+    }
+
+    public class Processor {
+        int cores;
+        String manufacturer;
+        String name;
+
+        Processor(int cores, String manufacturer, String name) {
+            this.cores = cores;
+            this.manufacturer = manufacturer;
+            this.name = name;
+        }
+
+        public void getProcessorInfo() {
+            System.out.println("Jumlah core: " + this.cores);
+            System.out.println("Pabrik: " + this.manufacturer);
+            System.out.println("Processor: " + this.name);
+        }
+    }
+
+    public class RAM {
+        int jumlahRAM;
+        String manufacturer;
+
+        RAM(int jumlahRAM, String manufacturer) {
+            this.jumlahRAM = jumlahRAM;
+            this.manufacturer = manufacturer;
+        }
+
+        public void getInfoRAM() {
+            System.out.println("Jumlah RAM: " + this.jumlahRAM);
+            System.out.println("Pabrik: " + this.manufacturer);
+        }
+    }
+
+    public class Harddisk {
+        int kapasitas;
+        String manufacturer;
+
+        Harddisk(int kapasitas, String manufacturer) {
+            this.kapasitas = kapasitas;
+            this.manufacturer = manufacturer;
+        }
+
+        public void getInfoHarddisk() {
+            System.out.println("Kapasitas Harddisk: " + this.kapasitas + " GB");
+            System.out.println("Pabrik: " + this.manufacturer);
+        }
+    }
+
+    public class Motherboard {
+        String model;
+        String manufacturer;
+
+        Motherboard(String model, String manufacturer) {
+            this.model = model;
+            this.manufacturer = manufacturer;
+        }
+
+        public void getInfoMotherboard() {
+            System.out.println("Model Motherboard: " + this.model);
+            System.out.println("Pabrik: " + this.manufacturer);
+        }
+    }
+
+    public class PowerSupply {
+        String type;
+        String manufacturer;
+
+        PowerSupply(String type, String manufacturer) {
+            this.type = type;
+            this.manufacturer = manufacturer;
+        }
+
+        public void getInfoPowerSupply() {
+            System.out.println("Tipe Power Supply: " + this.type);
+            System.out.println("Pabrik: " + this.manufacturer);
+        }
+    }
+
+    public class VGACard {
+        String model;
+        String manufacturer;
+
+        VGACard(String model, String manufacturer) {
+            this.model = model;
+            this.manufacturer = manufacturer;
+        }
+
+        public void getInfoVGACard() {
+            System.out.println("Model VGA Card: " + this.model);
+            System.out.println("Pabrik: " + this.manufacturer);
+        }
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        // buat object CPU
+        CPU myKomputer = new CPU(15000000, "Lenovo");
+
+        CPU.Processor i7 = myKomputer.new Processor(8, "Intel", "i7");
+        CPU.RAM rs32GB = myKomputer.new RAM(32, "Samsung");
+
+        CPU.Harddisk hd1TB = myKomputer.new Harddisk(1000, "Seagate");
+        CPU.Motherboard mb = myKomputer.new Motherboard("ATX", "ASUS");
+        CPU.PowerSupply ps = myKomputer.new PowerSupply("ATX", "Corsair");
+        CPU.VGACard vga = myKomputer.new VGACard("Nvidia GTX 1080", "MSI");
+
+        myKomputer.getCPUInfo();
+        i7.getProcessorInfo();
+        rs32GB.getInfoRAM();
+        hd1TB.getInfoHarddisk();
+        mb.getInfoMotherboard();
+        ps.getInfoPowerSupply();
+        vga.getInfoVGACard();
+    }
+}
